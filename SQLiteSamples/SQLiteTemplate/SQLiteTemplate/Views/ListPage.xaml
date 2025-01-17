@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SQLiteTemplate.ViewModels"
+             x:Class="SQLiteTemplate.Views.ListPage"
+             Title="ListPage">
+    <!--
+    <ContentPage.BindingContext>
+        <vm:ListPageViewModel />
+    </ContentPage.BindingContext>
+    -->
+    <RefreshView x:Name="rev"
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand"
+        RefreshColor="Blue"
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefresh}">
+        <Grid RowSpacing="10" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <VerticalStackLayout Grid.Row="0">
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Kullanıcı Listesi" 
+                    TextColor="Red" 
+                    FontSize="Medium"
+                    TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RefreshCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="1">
+                <ScrollView Margin="10" HeightRequest="600">
+                    <CollectionView x:Name="userList" ItemsSource="{Binding UserList}" SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Span="1" Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnSpacing="5" RowSpacing="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label
+                            Text="{Binding Username}" 
+                            TextDecorations="Underline"
+                            TextColor="Blue"
+                            FontSize="Body"
+                            Grid.Row="0"
+                            Grid.Column="0" 
+                            WidthRequest="150" 
+                            HeightRequest="40">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                            Command="{Binding BindingContext.DetailuserCommand, Source={x:Reference userList}}" 
+                                            CommandParameter="{Binding Id}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <!--
+                            <Label Text="{Binding Username}" 
+                            Grid.Row="0"
+                            Grid.Column="0"/>
+
+                            <Label Text="{Binding Mail}" 
+                            Grid.Row="0"
+                            Grid.Column="1"/>
+
+                            <Label Text="{Binding Password}" 
+                            Grid.Row="0"
+                            Grid.Column="2"/>
+
+                           
+                            <Button Text="{Binding Id,StringFormat='Buton {0}'}" 
+                            AutomationId="{Binding Id}"
+                            Grid.Row="0"
+                            Grid.Column="3" 
+                            WidthRequest="100" 
+                            HeightRequest="40"
+                            Command="{Binding BindingContext.DetailuserCommand, Source={x:Reference myListPage}}" 
+                            CommandParameter="{Binding Id}" />
+                            -->
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+            </VerticalStackLayout>
+        </Grid>
+    </RefreshView>
+    
+</ContentPage>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SQLiteTemplate.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SQLiteTemplate"
+    xmlns:view ="clr-namespace:SQLiteTemplate.Views"
+    Shell.FlyoutBehavior="Flyout"
+    Title="SQLiteTemplate">
+    
+    <FlyoutItem Title="User Record">
+        <ShellContent
+            Title="User Record"
+            ContentTemplate="{DataTemplate view:RecordPage}"
+            Route="RecordPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="User List">
+        <ShellContent
+            Title="User List"
+            ContentTemplate="{DataTemplate view:ListPage}"
+            Route="ListPage" />
+    </FlyoutItem>
+</Shell>
