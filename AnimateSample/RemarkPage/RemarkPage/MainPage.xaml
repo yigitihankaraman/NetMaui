@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RemarkPage.Views"
+             x:Class="RemarkPage.MainPage">
+
+    <ContentPage.Content>
+
+        <ScrollView BackgroundColor="White">
+            <Grid RowSpacing="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Image x:Name="imageAction"  Source="Katty.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <local:Header x:Name="HeaderPage" VerticalOptions="Start" Grid.Row="0" TranslationX="-200"/>
+                <local:Remark x:Name="RemarkPage" VerticalOptions="Start" Grid.Row="0" TranslationY="40" TranslationX="-300">
+                    <local:Remark.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                    </local:Remark.GestureRecognizers>
+                </local:Remark>
+                <local:Detail x:Name="DetailPage" VerticalOptions="End" Grid.Row="0" IsVisible="False" Opacity="0.85"/>
+            </Grid>
+        </ScrollView>
+
+    </ContentPage.Content>
+
+</ContentPage>
