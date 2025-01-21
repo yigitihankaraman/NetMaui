@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="UploadImageToServer.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:UploadImageToServer"
+    Shell.FlyoutBehavior="Flyout"
+    Title="UploadImageToServer">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <ShellContent
+        Title="From take picture "
+        ContentTemplate="{DataTemplate local:TakePicturePage}"
+        Route="TakePicturePage" />
+
+    <ShellContent
+        Title="From directory"
+        ContentTemplate="{DataTemplate local:FromFilepickerPage}"
+        Route="FromFilepickerPage" />
+
+</Shell>
